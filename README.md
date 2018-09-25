@@ -37,8 +37,8 @@
 
 ### 第6章
 
-+ コード6.1 正規分布に対するギブズ・サンプラー: pybayes\_mcmc\_reg\_ex1.py
-+ コード6.2 回帰モデルに対するギブズ・サンプラー: pybayes\_mcmc\_reg\_ex1.py
++ コード6.1 正規分布に対するギブズ・サンプラー: pybayes\_gibbs\_gaussian.py
++ コード6.2 回帰モデルに対するギブズ・サンプラー: pybayes\_gibbs\_regression.py
 
 ### データ・ファイル
 
