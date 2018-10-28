@@ -9,6 +9,8 @@ import pandas as pd
 import pymc3 as pm
 #   MatplotlibのPyplotモジュールの読み込み
 import matplotlib.pyplot as plt
+#   tqdmからプログレスバーの関数を読み込む
+from tqdm import trange
 #   日本語フォントの設定
 from matplotlib.font_manager import FontProperties
 import sys
@@ -46,7 +48,7 @@ def gibbs_gaussian(data, iterations, mu0, tau0, nu0, lam0):
     c = n * variance_data + lam0
     sigma2 = variance_data
     runs = np.empty((iterations, 2))
-    for idx in range(iterations):
+    for idx in trange(iterations):
         variance_mu = 1.0 / (n / sigma2 + inv_tau02)
         mean_mu = variance_mu * (sum_data / sigma2 + mu0_tau02)
         mu = st.norm.rvs(loc=mean_mu, scale=np.sqrt(variance_mu))

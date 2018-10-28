@@ -2,13 +2,15 @@
 #%% NumPyの読み込み
 import numpy as np
 #   SciPyのlinalgモジュールの読み込み
-import scipy.linalg as lin
+import scipy.linalg as la
 #   SciPyのstatsモジュールの読み込み
 import scipy.stats as st
 #   Pandasの読み込み
 import pandas as pd
 #   PyMCの読み込み
 import pymc3 as pm
+#   tqdmからプログレスバーの関数を読み込む
+from tqdm import trange
 #   MatplotlibのPyplotモジュールの読み込み
 import matplotlib.pyplot as plt
 #   日本語フォントの設定
@@ -42,20 +44,20 @@ def gibbs_regression(y, X, iterations, b0, A0, nu0, lam0):
     n, k = X.shape
     XX = X.T.dot(X)
     Xy = X.T.dot(y)
-    b_ols = lin.solve(XX, Xy)
+    b_ols = la.solve(XX, Xy)
     rss = np.square(y - X.dot(b_ols)).sum()
     lam_hat = rss + lam0
-    nu_hat = 0.5 * (n + nu0)
+    nu_star = 0.5 * (n + nu0)
     A0b0 = A0.dot(b0)
     sigma2 = rss / (n - k)
     runs = np.empty((iterations, k + 1))
-    for idx in range(iterations):
-        cov_b = lin.inv(XX / sigma2 + A0)
+    for idx in trange(iterations):
+        cov_b = la.inv(XX / sigma2 + A0)
         mean_b = cov_b.dot(Xy / sigma2 + A0b0)
         b = st.multivariate_normal.rvs(mean=mean_b, cov=cov_b)
         diff = b - b_ols
         lam_star = 0.5 * (diff.T.dot(XX).dot(diff) + lam_hat)
-        sigma2 = st.invgamma.rvs(nu_hat, scale=lam_star)
+        sigma2 = st.invgamma.rvs(nu_star, scale=lam_star)
         runs[idx, :-1] = b
         runs[idx, -1] = sigma2
     return runs
@@ -105,7 +107,7 @@ b0 = np.zeros(k)
 A0 = 0.2 * np.eye(k)
 nu0 = 5.0
 lam0 = 7.0
-sd0 = np.sqrt(np.diag(lin.inv(A0))) 
+sd0 = np.sqrt(np.diag(la.inv(A0))) 
 prob = 0.95
 burnin = 2000
 samplesize = 20000
