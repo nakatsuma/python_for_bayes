@@ -6,7 +6,7 @@ import scipy.stats as st
 #   SciPyのoptimizeモジュールの読み込み
 import scipy.optimize as opt
 #   SciPyのLinalgモジュールの読み込み
-import scipy.linalg as lin
+import scipy.linalg as la
 #   Pandasの読み込み
 import pandas as pd
 #   MatplotlibのPyplotモジュールの読み込み
@@ -72,14 +72,14 @@ def regression_stats(y, X, b0, A0, nu0, lam0, prob):
     """
     XX = X.T.dot(X)
     Xy = X.T.dot(y)
-    b_ols = lin.solve(XX, Xy)
+    b_ols = la.solve(XX, Xy)
     A_star = XX + A0
-    b_star = lin.solve(A_star, Xy + A0.dot(b0))
-    C_star = lin.inv(lin.inv(XX) + lin.inv(A0))
+    b_star = la.solve(A_star, Xy + A0.dot(b0))
+    C_star = la.inv(la.inv(XX) + la.inv(A0))
     nu_star = n + nu0
     lam_star =  np.square(y - X.dot(b_ols)).sum() \
                 + (b0 - b_ols).T.dot(C_star).dot(b0 - b_ols) + lam0
-    h_star = np.sqrt(lam_star / nu_star * np.diag(lin.inv(A_star)))
+    h_star = np.sqrt(lam_star / nu_star * np.diag(la.inv(A_star)))
     sd_b = st.t.std(nu_star, loc=b_star, scale=h_star)
     ci_b = np.vstack(st.t.interval(prob, nu_star, loc=b_star, scale=h_star))
     hpdi_b = ci_b
@@ -122,7 +122,7 @@ b0 = np.zeros(2)
 A0 = 0.2 * np.eye(2)
 nu0 = 5.0
 lam0 = 7.0
-h0 = np.sqrt(np.diag(lam0 / nu0 * lin.inv(A0)))
+h0 = np.sqrt(np.diag(lam0 / nu0 * la.inv(A0)))
 prob = 0.95
 results, b_star, h, nu_star, lam_star = regression_stats(y, X, b0, A0, nu0,
                                                          lam0, prob)

@@ -4,7 +4,7 @@ import numpy as np
 #   SciPyのstatsモジュールの読み込み
 import scipy.stats as st
 #   SciPyのLinalgモジュールの読み込み
-import scipy.linalg as lin
+import scipy.linalg as la
 #   PyMCの読み込み
 import pymc3 as pm
 #   MatplotlibのPyplotモジュールの読み込み
@@ -36,7 +36,7 @@ b0 = np.zeros(k)
 A0 = 0.2 * np.eye(k)
 nu0 = 5.0
 lam0 = 7.0
-sd0 = np.sqrt(np.diag(lin.inv(A0)))
+sd0 = np.sqrt(np.diag(la.inv(A0)))
 multiple_regression = pm.Model()
 with multiple_regression:
     sigma2 = pm.InverseGamma('sigma2', alpha=0.5*nu0, beta=0.5*lam0)
