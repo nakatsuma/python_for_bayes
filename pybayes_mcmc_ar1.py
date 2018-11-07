@@ -15,7 +15,7 @@ if sys.platform.startswith('win'):
 elif sys.platform.startswith('darwin' ):
     FontPath = '/System/Library/Fonts/ヒラギノ角ゴシック W4.ttc'
 elif sys.platform.startswith('linux'):
-    FontPath = '/usr/share/fonts/truetype/takao-gothic/TakaoExGothic.ttf'
+    FontPath = '/usr/share/fonts/truetype/takao-gothic/TakaoPGothic.ttf'
 else:
     sys.exit('このPythonコードが対応していないOSを使用しています．')
 jpfont = FontProperties(fname=FontPath)
