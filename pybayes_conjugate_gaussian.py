@@ -105,8 +105,8 @@ nu0 = 5.0
 lam0 = 7.0
 tau0 = np.sqrt(lam0 / nu0 / n0)
 prob = 0.95
-results, mu_star, tau_star, nu_star, lam_star = gaussian_stats(data, mu0, n0,
-                                                               nu0, lam0, prob)
+results, mu_star, tau_star, nu_star, lam_star \
+    = gaussian_stats(data, mu0, n0, nu0, lam0, prob)
 print(results.to_string(float_format='{:,.4f}'.format))
 #%% 事後分布のグラフの作成
 fig, ax = plt.subplots(1, 2, num=1, figsize=(8, 4), facecolor='w')
