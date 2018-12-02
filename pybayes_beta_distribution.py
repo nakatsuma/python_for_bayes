@@ -17,7 +17,8 @@ ax[0, 0].set_xlim(0.0, 1.0)
 ax[0, 0].set_ylim(0.0, 4.5)
 for row_index in range(rows):
     a = value_a[row_index]
-    ax[row_index, 0].set_ylabel('$\\alpha$ = {0:3.1f}'.format(a), fontsize=12)
+    ax[row_index, 0].set_ylabel('$\\alpha$ = {0:3.1f}'.format(a),
+                                fontsize=12)
     for column_index in range(cols):
         b = value_b[column_index]
         ax[row_index, column_index].plot(q, st.beta.pdf(q, a, b), 'k-')

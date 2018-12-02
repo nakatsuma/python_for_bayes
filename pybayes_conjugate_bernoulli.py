@@ -63,8 +63,8 @@ def bernoulli_stats(data, a0, b0, prob):
     """
     n = data.size
     sum_data = data.sum()
-    a = a0 + sum_data
-    b = b0 + n - sum_data
+    a = sum_data + a0
+    b = n - sum_data + b0
     mean_pi = st.beta.mean(a, b)
     median_pi = st.beta.median(a, b)
     mode_pi = (a - 1.0) / (a + b - 2.0)
@@ -119,12 +119,13 @@ for index in range(2):
     b0_i = value_b0[index]
     ax2[index].plot(q, st.beta.pdf(q, a0_i, b0_i), color='k',
                     linestyle=styles[style_index],
-                    label='事前分布 Beta({0:<3.1f}, {1:<3.1f})'.format(a0_i, b0_i))
+                    label='事前分布 Beta({0:<3.1f}, {1:<3.1f})' \
+                    .format(a0_i, b0_i))
     for n_j in value_size:
-        style_index = style_index + 1
+        style_index += 1
         sum_data = np.sum(data[:n_j])
-        a_j = a0_i + sum_data
-        b_j = b0_i + n_j - sum_data
+        a_j = sum_data + a0_i
+        b_j = n_j - sum_data + b0_i
         ax2[index].plot(q, st.beta.pdf(q, a_j, b_j), color='k',
                         linestyle=styles[style_index],
                         label='事後分布 ( n = {0:<3d} )'.format(n_j))
