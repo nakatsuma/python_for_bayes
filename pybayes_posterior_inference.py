@@ -52,7 +52,8 @@ q = np.linspace(0, 1, 250)
 fig1 = plt.figure(num=1, facecolor='w')
 plt.plot(q, (q - 0.5)**2, 'k-', label='2乗損失 $(q-\\delta)^2$')
 plt.plot(q, np.abs(q - 0.5), 'k--', label='絶対損失 $|q-\\delta|$')
-plt.axhline(y=1, color='k', linestyle='-.', label='0-1損失 $1_{q}(\\delta)$')
+plt.axhline(y=1, color='k', linestyle='-.',
+            label='0-1損失 $1_{q}(\\delta)$')
 plt.plot([0.5, 0.5], [0, 1], 'k:', linewidth=0.5)
 plt.plot(0.5, 0, marker='o', mec='k', mfc='k')
 plt.plot(0.5, 1, marker='o', mec='k', mfc='w')
@@ -71,7 +72,8 @@ ci = st.beta.interval(prob, a, b)
 hpdi = beta_hpdi(ci, a, b, prob)
 q = np.linspace(0, 1, 250)
 qq = [np.linspace(ci[0], ci[1], 250), np.linspace(hpdi[0], hpdi[1], 250)]
-label1 = 'ベータ分布 ($\\alpha$ = {0:<3.1f}, $\\beta$ = {1:<3.1f})'.format(a, b)
+label1 = 'ベータ分布 ($\\alpha$ = {0:<3.1f}, $\\beta$ = {1:<3.1f})' \
+         .format(a, b)
 label2 = ['信用区間', 'HPD区間']
 fig2, ax2 = plt.subplots(2, 1, sharex='all', sharey='all',
                          num=2, facecolor='w')
