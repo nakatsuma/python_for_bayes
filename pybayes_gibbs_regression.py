@@ -99,7 +99,7 @@ np.random.seed(99)
 u = st.norm.rvs(scale=0.7, size=n)
 x1 = st.uniform.rvs(loc=-np.sqrt(3.0), scale=2.0*np.sqrt(3.0), size=n)
 x2 = st.uniform.rvs(loc=-np.sqrt(3.0), scale=2.0*np.sqrt(3.0), size=n)
-y = 1.0 + 2.0 * x1 - 1.0 * x2 + u
+y = 1.0 + 2.0 * x1 - x2 + u
 X = np.stack((np.ones(n), x1, x2), axis=1)
 #%% ギブズサンプラーの実行
 k = X.shape[1]
