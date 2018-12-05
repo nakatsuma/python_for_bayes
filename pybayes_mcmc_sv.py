@@ -76,8 +76,8 @@ plt.tight_layout()
 plt.savefig('pybayes_fig_sv_posterior.png', dpi=300)
 plt.show()
 #%% ボラティリティのプロット
-vol = np.median(np.tile(trace['sigma'], (n, 1)).T * np.exp(trace['log_vol']),
-                axis=0)
+vol = np.median(np.tile(trace['sigma'], 
+                (n, 1)).T * np.exp(trace['log_vol']), axis=0)
 fig2 = plt.figure(num=2, facecolor='w')
 plt.plot(series_date, y, 'k-', linewidth=0.5, label='ドル円為替レート')
 plt.plot(series_date, 2.0 * vol, 'k:', linewidth=0.5, label='2シグマ区間')
