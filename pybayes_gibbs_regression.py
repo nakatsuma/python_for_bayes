@@ -26,7 +26,7 @@ else:
     print('このPythonコードが対応していないOSを使用しています．')
     sys.exit()
 jpfont = FontProperties(fname=FontPath)
-#%% ギブズサンプラーによる回帰モデルの回帰係数と誤差項の分散に関するベイズ推論
+#%% ギブズサンプラーによる回帰モデルのパラメータに関するベイズ推論
 #   回帰モデルの回帰係数と誤差項の分散のギブズサンプラー
 def gibbs_regression(y, X, iterations, b0, A0, nu0, lam0):
     """
