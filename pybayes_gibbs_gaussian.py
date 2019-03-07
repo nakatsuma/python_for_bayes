@@ -24,8 +24,8 @@ else:
     print('このPythonコードが対応していないOSを使用しています．')
     sys.exit()
 jpfont = FontProperties(fname=FontPath)
-#%% ギブズサンプラーによる正規分布の平均と分散に関するベイズ推論
-#   正規分布の平均と分散のギブズサンプラー
+#%% ギブズ・サンプラーによる正規分布の平均と分散に関するベイズ推論
+#   正規分布の平均と分散のギブズ・サンプラー
 def gibbs_gaussian(data, iterations, mu0, tau0, nu0, lam0):
     """
         入力
@@ -94,7 +94,7 @@ sigma = 2.0
 n = 50
 np.random.seed(99)
 data = st.norm.rvs(loc=mu, scale=sigma, size=n)
-#%% ギブズサンプラーの実行
+#%% ギブズ・サンプラーの実行
 mu0 = 0.0
 tau0 = 1.0
 nu0 = 5.0

@@ -26,8 +26,8 @@ else:
     print('このPythonコードが対応していないOSを使用しています．')
     sys.exit()
 jpfont = FontProperties(fname=FontPath)
-#%% ギブズサンプラーによる回帰モデルのパラメータに関するベイズ推論
-#   回帰モデルの回帰係数と誤差項の分散のギブズサンプラー
+#%% ギブズ・サンプラーによる回帰モデルのパラメータに関するベイズ推論
+#   回帰モデルの回帰係数と誤差項の分散のギブズ・サンプラー
 def gibbs_regression(y, X, iterations, b0, A0, nu0, lam0):
     """
         入力
@@ -101,7 +101,7 @@ x1 = st.uniform.rvs(loc=-np.sqrt(3.0), scale=2.0*np.sqrt(3.0), size=n)
 x2 = st.uniform.rvs(loc=-np.sqrt(3.0), scale=2.0*np.sqrt(3.0), size=n)
 y = 1.0 + 2.0 * x1 - x2 + u
 X = np.stack((np.ones(n), x1, x2), axis=1)
-#%% ギブズサンプラーの実行
+#%% ギブズ・サンプラーの実行
 k = X.shape[1]
 b0 = np.zeros(k)
 A0 = 0.2 * np.eye(k)
