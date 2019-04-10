@@ -2,6 +2,77 @@
 
 [朝倉書店ウェブサイト](https://www.asakura.co.jp/books/isbn/978-4-254-12898-7/ "朝倉書店ウェブサイト")
 
+## PythonとPyMCのインストール手順 (Anaconda 2019.03 対応)
+
+### ステップ1: Anacondaのインストール
+
+1. 古いAnacondaがインストールされているときは、この[手順](https://docs.anaconda.com/anaconda/install/uninstall/)でアンインストールしておく。
+
+2. Anacondaのインストーラー (Windows, macOS or Linux) を[ここ](https://www.anaconda.com/distribution/)から入手する.
+
+3. ダウンロードしたインストーラーをダブルクリックして Anacondaのインストールを行う。
+
+### Step 2: PyMCを実行する環境の設定
+
+`Anaconda Powershell Prompt` (Windows) あるいは `Terminal` (macOS, Linux) を立ち上げて、
+
+```IPython
+(base) C:\Users\Thomas> conda create -n bayes jupyterlab seaborn spyder pymc3
+```
+
+とする。続けて
+
+```IPython
+(base) C:\Users\Thomas> conda activate bayes
+```
+
+とすると、以下のようにプロンプトが変わる。
+
+```IPython
+(bayes) C:\Users\Thomas>
+```
+
+さらに
+
+```IPython
+(bayes) C:\Users\Thomas> conda install conda-forge::theano
+```
+
+として、最後に
+
+```IPython
+(bayes) C:\Users\Thomas> python -m ipykernel install --user --name bayes --display-name "Python (Bayes)"
+```
+
+とすれば、環境の設定が完了する。
+
+## Jupyter Notebookを始める方法
+
+### 方法1: Anaconda NavigatorからJupyter Notebookを起動する方法
+
+`Anaconda Navigator`を`Start Menu` (Windows) か `Launchpad` (macOS) から起動する。 あるいは、`Anaconda Powershell Prompt` (Windows) か `Terminal` (macOS, Linux) を立ち上げて、
+
+```IPython
+(base) C:\Users\Thomas> anaconda-navigator
+```
+
+としてもよい。`Anaconda Navigator`で`Jupyter Notebook`の`Launch`ボタンをクリックすれば、Anaconda Navigatorが起動する。
+
+### 方法2: コマンドラインから起動する方法
+
+`Anaconda Powershell Prompt` (Windows) か `Terminal` (macOS, Linux) を立ち上げて、
+
+```IPython
+(base) C:\Users\Thomas> conda activate bayes
+(bayes) C:\Users\Thomas> jupyter notebook
+```
+
+とする。
+
+方法1あるいは方法2を実行すると、規定のブラウザーが立ち上がり、Jupyter Notebookが起動する。その画面の右上にある`New`のプルダウンメニューの中にある`Python (Bayes)`を選んでNotebookを開始すればよい。
+
+注意: `New`のプルダウンメニューの中にある`Python 3`を選んでNotebookを開始すると、　PyMCが見つからないという意味のエラーが出る。
+
 ## Pythonコード
 
 ### 第2章
