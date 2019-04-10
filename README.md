@@ -58,7 +58,7 @@
 
 としてもよい。`Anaconda Navigator`で`Jupyter Notebook`の`Launch`ボタンをクリックすれば、Anaconda Navigatorが起動する。
 
-### 方法2: CUIから起動する方法
+### 方法2: CLIから起動する方法
 
 `Anaconda Powershell Prompt` (Windows) か `Terminal` (macOS, Linux) を立ち上げて、
 
