@@ -76,7 +76,7 @@ def regression_stats(y, X, b0, A0, nu0, lam0, prob):
     A_star = XX + A0
     b_star = la.solve(A_star, Xy + A0.dot(b0))
     C_star = la.inv(la.inv(XX) + la.inv(A0))
-    nu_star = n + nu0
+    nu_star = y.size + nu0
     lam_star =  np.square(y - X.dot(b_ols)).sum() \
                 + (b0 - b_ols).T.dot(C_star).dot(b0 - b_ols) + lam0
     h_star = np.sqrt(lam_star / nu_star * np.diag(la.inv(A_star)))
