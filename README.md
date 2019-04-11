@@ -60,7 +60,7 @@
 (base) C:\Users\Thomas> anaconda-navigator
 ```
 
-としてもよい。`Anaconda Navigator`で`Jupyter Notebook`の`Launch`ボタンをクリックすれば、Anaconda Navigatorが起動する。
+としてもよい。そして、`Anaconda Navigator`で`Jupyter Notebook`の`Launch`ボタンをクリックする。
 
 ### 方法2: CLIから起動する方法
 
@@ -75,7 +75,7 @@
 
 方法1あるいは方法2を実行すると、規定のブラウザーが立ち上がり、Jupyter Notebookが起動する。その画面の右上にある`New`のプルダウンメニューの中にある`Python (Bayes)`を選んでNotebookを開始すればよい。
 
-注意: `New`のプルダウンメニューの中にある`Python 3`を選んでNotebookを開始すると、PyMCが見つからないという意味のエラーが出る。
+注意: `New`のプルダウンメニューの中にある`Python 3`を選んでNotebookを開始すると、PyMCを使用することができない。
 
 ## Pythonコード
 
