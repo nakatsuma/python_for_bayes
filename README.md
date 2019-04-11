@@ -2,6 +2,10 @@
 
 [朝倉書店ウェブサイト](https://www.asakura.co.jp/books/isbn/978-4-254-12898-7/ "朝倉書店ウェブサイト")
 
+## 正誤表
+
++ [ERRATA.md](ERRATA.md)
+  
 ## PythonとPyMCのインストール手順 (Anaconda 2019.03 対応)
 
 ### ステップ1: Anacondaのインストール
