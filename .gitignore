@@ -47,7 +47,7 @@ $RECYCLE.BIN/
 .idea/
 
 # Jupyter Notebook
-*.ipynb
+# *.ipynb
 .ipynb_checkpoints/
 
 # Windows default autosave extension
