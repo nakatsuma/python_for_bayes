@@ -5,7 +5,7 @@
 ---
 
 + [正誤表](ERRATA.md)
-+ [PythonとPyMCのインストール手順 (Anaconda 2019.03 対応)](#Python%E3%81%A8PyMC%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86-Anaconda-201903-%E5%AF%BE%E5%BF%9C)
++ [PythonとPyMCのインストール手順](#python%e3%81%a8pymc%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e6%89%8b%e9%a0%86)
   + [ステップ1: Anacondaのインストール](#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971-Anaconda%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
   + [ステップ2: PyMCを実行する環境の設定](#%E3%82%B9%E3%83%86%E3%83%83%E3%83%972-PyMC%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E7%92%B0%E5%A2%83%E3%81%AE%E8%A8%AD%E5%AE%9A)
 + [Jupyter Notebookを始める方法](#Jupyter-Notebook%E3%82%92%E5%A7%8B%E3%82%81%E3%82%8B%E6%96%B9%E6%B3%95)
@@ -24,7 +24,7 @@
 
 + [ERRATA.md](ERRATA.md)
   
-## PythonとPyMCのインストール手順 (Anaconda 2019.03 対応)
+## PythonとPyMCのインストール手順
 
 ### ステップ1: Anacondaのインストール
 
