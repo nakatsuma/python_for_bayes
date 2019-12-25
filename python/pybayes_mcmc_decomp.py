@@ -21,6 +21,12 @@ elif sys.platform.startswith('linux'):
 else:
     sys.exit('このPythonコードが対応していないOSを使用しています．')
 jpfont = FontProperties(fname=FontPath)
+#   コンパイルエラーの回避策
+import theano
+theano.config.gcc.cxxflags = '-Wno-c++11-narrowing'
+#   PandasからMatplotlibへのコンバーター
+from pandas.plotting import register_matplotlib_converters
+register_matplotlib_converters()
 #%% 使用電力量データの読み込み
 """
     電灯電力需要実績月報・用途別使用電力量・販売電力合計・10社計
@@ -52,7 +58,7 @@ with timeseries_decomp:
                       random_seed=123,
                       nuts_kwargs=dict(target_accept=0.9))
 param_names = ['sigma', 'tau', 'omega']
-print(pm.summary(trace, varnames=param_names))
+print(pm.summary(trace, var_names=param_names))
 #%% 事後分布のグラフの作成
 series_name = ['原系列', '平滑値', 'トレンド', '季節変動', 'ノイズ']
 labels = ['$\\sigma$', '$\\tau$', '$\\omega$']

@@ -22,6 +22,9 @@ else:
     print('このPythonコードが対応していないOSを使用しています．')
     sys.exit()
 jpfont = FontProperties(fname=FontPath)
+#   コンパイルエラーの回避策
+import theano
+theano.config.gcc.cxxflags = '-Wno-c++11-narrowing'
 #%% 回帰モデルからのデータ生成
 n = 50
 np.random.seed(99)

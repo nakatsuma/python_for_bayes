@@ -20,6 +20,9 @@ else:
     print('このPythonコードが対応していないOSを使用しています．')
     sys.exit()
 jpfont = FontProperties(fname=FontPath)
+#   コンパイルエラーの回避策
+import theano
+theano.config.gcc.cxxflags = '-Wno-c++11-narrowing'
 #%% 標準正規分布の累積分布関数
 def normal_cdf(x):
     return 0.5 * (1.0 + pm.math.erf(x / pm.math.sqrt(2.0)))

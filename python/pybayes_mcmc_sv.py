@@ -21,6 +21,12 @@ elif sys.platform.startswith('linux'):
 else:
     sys.exit('このPythonコードが対応していないOSを使用しています．')
 jpfont = FontProperties(fname=FontPath)
+#   コンパイルエラーの回避策
+import theano
+theano.config.gcc.cxxflags = '-Wno-c++11-narrowing'
+#   PandasからMatplotlibへのコンバーター
+from pandas.plotting import register_matplotlib_converters
+register_matplotlib_converters()
 #%% ドル円為替レート日次データの読み込み
 """
     The Pacific Exchange Rate Serviceより入手
@@ -50,7 +56,7 @@ with sv_model:
                       random_seed=123,
                       nuts_kwargs=dict(target_accept=0.9))
 param_names = ['nu', 'sigma', 'rho', 'omega']
-print(pm.summary(trace, varnames=param_names))
+print(pm.summary(trace, var_names=param_names))
 #%% 事後分布のグラフの作成
 labels = ['$\\nu$', '$\\sigma$', '$\\rho$', '$\\omega$']
 k = len(labels)
