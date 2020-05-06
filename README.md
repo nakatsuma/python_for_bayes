@@ -36,10 +36,12 @@
 
 ### ステップ2: PyMCを実行する環境の設定
 
-`Anaconda Powershell Prompt` (Windows) あるいは `Terminal` (macOS, Linux) を立ち上げて、
+#### Windowsでの設定手順
+
+`Anaconda Powershell Prompt`を立ち上げて、
 
 ```IPython
-(base) PS C:\Users\Thomas> conda create -n bayes jupyterlab seaborn spyder conda-forge::pymc3 conda-forge::theano
+(base) PS C:\Users\Thomas> conda create -n bayes jupyterlab seaborn spyder
 ```
 
 とする。続けて
@@ -54,6 +56,12 @@
 (bayes) PS C:\Users\Thomas>
 ```
 
+続いてpipでPyMCをインストールする。
+
+```IPython
+(bayes) PS C:\Users\Thomas> pip install pymc3
+```
+
 最後に
 
 ```IPython
@@ -61,6 +69,38 @@
 ```
 
 とすれば、環境の設定が完了する。
+
+---
+
+#### macOS/Lunuxでの設定手順
+
+`Terminal`を立ち上げて、
+
+```IPython
+(base) MacBook-Pro :~ Thomas% conda create -n bayes jupyterlab seaborn spyder pymc3
+```
+
+とする。続けて
+
+```IPython
+(base) MacBook-Pro :~ Thomas% conda activate bayes
+```
+
+とすると、以下のようにプロンプトが変わる。
+
+```IPython
+(bayes) MacBook-Pro :~ Thomas%
+```
+
+最後に
+
+```IPython
+(bayes) MacBook-Pro :~ Thomas% python -m ipykernel install --user --name bayes --display-name "Python (Bayes)"
+```
+
+とすれば、環境の設定が完了する。
+
+---
 
 ## Jupyter Notebookを始める方法
 
