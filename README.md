@@ -36,7 +36,7 @@
 
 ### ステップ2: PyMCを実行する環境の設定
 
-`Anaconda Powershell Prompt` (Windows) あるいは`Terminal` (macos/Linux) を立ち上げて、
+`Anaconda Powershell Prompt` (Windows) あるいは`Terminal` (macos, Linux) を立ち上げて、
 
 ```IPython
 (base) PS C:\Users\Thomas> conda create -n bayes jupyterlab seaborn spyder
