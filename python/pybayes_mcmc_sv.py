@@ -43,9 +43,9 @@ with sv_model:
     sigma = pm.HalfCauchy('sigma', beta=1.0)
     rho = pm.Uniform('rho', lower=-1.0, upper=1.0)
     omega = pm.HalfCauchy('omega', beta=1.0)
-    log_vol = pm.AR('log_vol', rho, sd=omega, shape=n,
-                    init=pm.Normal.dist(sd=omega/pm.math.sqrt(1 - rho**2)))
-    observation = pm.StudentT('y', nu, sd=sigma*pm.math.exp(log_vol),
+    log_vol = pm.AR('log_vol', rho, sigma=omega, shape=n,
+                    init=pm.Normal.dist(sigma=omega/pm.math.sqrt(1 - rho**2)))
+    observation = pm.StudentT('y', nu, sigma=sigma*pm.math.exp(log_vol),
                               observed=y)
 #%% 事後分布からのサンプリング
 n_draws = 5000
@@ -53,8 +53,7 @@ n_chains = 4
 n_tune = 2000
 with sv_model:
     trace = pm.sample(draws=n_draws, chains=n_chains, tune=n_tune,
-                      random_seed=123,
-                      nuts_kwargs=dict(target_accept=0.9))
+                      target_accept=0.9, random_seed=123)
 param_names = ['nu', 'sigma', 'rho', 'omega']
 print(pm.summary(trace, var_names=param_names))
 #%% 事後分布のグラフの作成
@@ -82,7 +81,7 @@ plt.tight_layout()
 plt.savefig('pybayes_fig_sv_posterior.png', dpi=300)
 plt.show()
 #%% ボラティリティのプロット
-vol = np.median(np.tile(trace['sigma'], 
+vol = np.median(np.tile(trace['sigma'],
                 (n, 1)).T * np.exp(trace['log_vol']), axis=0)
 fig2 = plt.figure(num=2, facecolor='w')
 plt.plot(series_date, y, 'k-', linewidth=0.5, label='ドル円為替レート')

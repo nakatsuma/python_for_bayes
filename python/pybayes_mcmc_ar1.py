@@ -36,9 +36,9 @@ with ar1_model:
     sigma = pm.HalfCauchy('sigma', beta=1.0)
     rho = pm.Uniform('rho', lower=-1.0, upper=1.0)
     omega = pm.HalfCauchy('omega', beta=1.0)
-    ar1 = pm.AR('ar1', rho, sd=omega, shape=n,
-                init=pm.Normal.dist(sd=omega/pm.math.sqrt(1 - rho**2)))
-    observation = pm.Normal('y', mu=ar1, sd=sigma, observed=y)
+    ar1 = pm.AR('ar1', rho, sigma=omega, shape=n,
+                init=pm.Normal.dist(sigma=omega/pm.math.sqrt(1 - rho**2)))
+    observation = pm.Normal('y', mu=ar1, sigma=sigma, observed=y)
 #%% 事後分布からのサンプリング
 n_draws = 5000
 n_chains = 4

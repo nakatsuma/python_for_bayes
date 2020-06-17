@@ -39,7 +39,7 @@ with regression_laplace_halfcauchy:
     a = pm.Laplace('a', mu=b0[0], b=tau_coef[0])
     b = pm.Laplace('b', mu=b0[1], b=tau_coef[1])
     y_hat = a + b * x
-    likelihood = pm.Normal('y', mu=y_hat, sd=sigma, observed=y)
+    likelihood = pm.Normal('y', mu=y_hat, sigma=sigma, observed=y)
 #%% 事後分布からのサンプリング
 n_draws = 5000
 n_chains = 4
@@ -76,7 +76,7 @@ for index in range(k+1):
     ax[index, 1].set_xlim(x_min, x_max)
     ax[index, 1].set_ylim(0, 1.1*posterior.max())
     ax[index, 1].set_ylabel('確率密度', fontproperties=jpfont)
-    ax[index, 1].legend(loc='best', frameon=False, prop=jpfont)    
+    ax[index, 1].legend(loc='best', frameon=False, prop=jpfont)
 plt.tight_layout()
 plt.savefig('pybayes_fig_mcmc_reg_ex4.png', dpi=300)
 plt.show()

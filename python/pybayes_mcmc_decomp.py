@@ -46,17 +46,16 @@ with timeseries_decomp:
     sigma = pm.HalfCauchy('sigma', beta=1.0)
     tau = pm.HalfCauchy('tau', beta=1.0)
     omega = pm.HalfCauchy('omega', beta=1.0)
-    trend = pm.AR('trend', trend_coef, sd=tau, shape=n)
-    seasonal = pm.AR('seasonal', seasonal_coef, sd=omega, shape=n)
-    observation = pm.Normal('y', mu=trend+seasonal, sd=sigma, observed=y)
+    trend = pm.AR('trend', trend_coef, sigma=tau, shape=n)
+    seasonal = pm.AR('seasonal', seasonal_coef, sigma=omega, shape=n)
+    observation = pm.Normal('y', mu=trend+seasonal, sigma=sigma, observed=y)
 #%% 事後分布からのサンプリング
 n_draws = 5000
 n_chains = 4
 n_tune = 2000
 with timeseries_decomp:
     trace = pm.sample(draws=n_draws, chains=n_chains, tune=n_tune,
-                      random_seed=123,
-                      nuts_kwargs=dict(target_accept=0.9))
+                      target_accept=0.9, random_seed=123)
 param_names = ['sigma', 'tau', 'omega']
 print(pm.summary(trace, var_names=param_names))
 #%% 事後分布のグラフの作成

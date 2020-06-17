@@ -40,10 +40,10 @@ sd0 = np.sqrt(np.diag(la.inv(A0)))
 regresssion_normal_invgamma = pm.Model()
 with regresssion_normal_invgamma:
     sigma2 = pm.InverseGamma('sigma2', alpha=0.5*nu0, beta=0.5*lam0)
-    a = pm.Normal('a', mu=0.0, sd=sd0[0])
-    b = pm.Normal('b', mu=0.0, sd=sd0[1])
+    a = pm.Normal('a', mu=0.0, sigma=sd0[0])
+    b = pm.Normal('b', mu=0.0, sigma=sd0[1])
     y_hat = a + b * x
-    likelihood = pm.Normal('y', mu=y_hat, sd=pm.math.sqrt(sigma2),
+    likelihood = pm.Normal('y', mu=y_hat, sigma=pm.math.sqrt(sigma2),
                            observed=y)
 #%% 事後分布からのサンプリング
 n_draws = 5000
@@ -81,7 +81,7 @@ for index in range(k+1):
     ax[index, 1].set_xlim(x_min, x_max)
     ax[index, 1].set_ylim(0, 1.1*posterior.max())
     ax[index, 1].set_ylabel('確率密度', fontproperties=jpfont)
-    ax[index, 1].legend(loc='best', frameon=False, prop=jpfont)    
+    ax[index, 1].legend(loc='best', frameon=False, prop=jpfont)
 plt.tight_layout()
 plt.savefig('pybayes_fig_mcmc_reg_ex2.png', dpi=300)
 plt.show()
