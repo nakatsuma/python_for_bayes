@@ -90,7 +90,7 @@ def regression_stats(y, X, b0, A0, nu0, lam0, prob):
     sd_sigma2 = st.invgamma.std(0.5*nu_star, scale=0.5*lam_star)
     ci_sigma2 = st.invgamma.interval(prob, 0.5*nu_star, scale=0.5*lam_star)
     hpdi_sigma2 = invgamma_hpdi(ci_sigma2, 0.5*nu_star, 0.5*lam_star, prob)
-    stats_sigma2 = np.hstack((mean_sigma2, median_sigma2, mode_sigma2, 
+    stats_sigma2 = np.hstack((mean_sigma2, median_sigma2, mode_sigma2,
                               sd_sigma2, ci_sigma2, hpdi_sigma2))
     stats = np.vstack((stats_b, stats_sigma2))
     stats_string = ['平均', '中央値', '最頻値', '標準偏差', '信用区間（下限）',

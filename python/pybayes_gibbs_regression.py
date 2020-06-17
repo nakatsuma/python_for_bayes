@@ -87,8 +87,8 @@ def mcmc_stats(runs, burnin, prob, batch):
             for i in range(k)]
     stats = np.vstack((post_mean, post_median, post_sd, mc_err,
                        ci_lower, ci_upper, hpdi.T, rhat)).T
-    stats_string = ['平均', '中央値', '標準偏差', '近似誤差', 
-                    '信用区間（下限）', '信用区間（上限）', 
+    stats_string = ['平均', '中央値', '標準偏差', '近似誤差',
+                    '信用区間（下限）', '信用区間（上限）',
                     'HPDI（下限）', 'HPDI（上限）', '$\\hat R$']
     param_string = ['$\\beta_{0:<d}$'.format(i+1) for i in range(k-1)]
     param_string.append('$\\sigma^2$')
@@ -107,7 +107,7 @@ b0 = np.zeros(k)
 A0 = 0.2 * np.eye(k)
 nu0 = 5.0
 lam0 = 7.0
-sd0 = np.sqrt(np.diag(la.inv(A0))) 
+sd0 = np.sqrt(np.diag(la.inv(A0)))
 prob = 0.95
 burnin = 2000
 samplesize = 20000

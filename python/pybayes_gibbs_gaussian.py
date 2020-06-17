@@ -83,8 +83,8 @@ def mcmc_stats(runs, burnin, prob, batch):
             for i in range(k)]
     stats = np.vstack((post_mean, post_median, post_sd, mc_err,
                        ci_lower, ci_upper, hpdi.T, rhat)).T
-    stats_string = ['平均', '中央値', '標準偏差', '近似誤差', 
-                    '信用区間（下限）', '信用区間（上限）', 
+    stats_string = ['平均', '中央値', '標準偏差', '近似誤差',
+                    '信用区間（下限）', '信用区間（上限）',
                     'HPDI（下限）', 'HPDI（上限）', '$\\hat R$']
     param_string = ['平均 $\\mu$', '分散 $\\sigma^2$']
     return pd.DataFrame(stats, index=param_string, columns=stats_string)
