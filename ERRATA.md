@@ -1,6 +1,6 @@
 # 「Pythonによるベイズ統計学入門」正誤表
 
-## 2019年6月25日改定
+## 2020年6月20日改定
 
 ### 誤植
 
@@ -32,3 +32,12 @@
 
 + （誤）Kitagawand Gersch (1984)
 + （正）Kitagawa and Gersch (1984)
+
+### PyMCの仕様の変更に伴う修正
+
+#### コード6.1`pybayes_gibbs_gaussian.py`とコード6.2`pybayes_gibbs_regression.py`において
+
++ `pm.mc_error()`を`pm.mcse()`へ
++ `pm.gelman_rubin()`を`pm.rhat()`へ
+
+と置き換える．特に`pm.mcse()`は`pm.mc_error()`から用法も変更されているので注意．
