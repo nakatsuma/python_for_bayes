@@ -75,11 +75,12 @@ def mcmc_stats(runs, burnin, prob, batch):
     post_mean = np.mean(traces, axis=0)
     post_median = np.median(traces, axis=0)
     post_sd = np.std(traces, axis=0)
-    mc_err = pm.mc_error(traces, batches=batch)
+    mc_err = [pm.mcse(traces[:, i].reshape((n, batch), order='F')) \
+              for i in range(k)]
     ci_lower = np.percentile(traces, 0.5 * alpha, axis=0)
     ci_upper = np.percentile(traces, 100 - 0.5 * alpha, axis=0)
     hpdi = pm.hpd(traces, 1.0 - prob)
-    rhat = [pm.gelman_rubin(traces[:, i].reshape((n, batch), order='F')) \
+    rhat = [pm.rhat(traces[:, i].reshape((n, batch), order='F')) \
             for i in range(k)]
     stats = np.vstack((post_mean, post_median, post_sd, mc_err,
                        ci_lower, ci_upper, hpdi.T, rhat)).T
