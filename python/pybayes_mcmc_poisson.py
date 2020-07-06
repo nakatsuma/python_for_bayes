@@ -20,9 +20,6 @@ else:
     print('このPythonコードが対応していないOSを使用しています．')
     sys.exit()
 jpfont = FontProperties(fname=FontPath)
-#   コンパイルエラーの回避策
-import theano
-theano.config.gcc.cxxflags = '-Wno-c++11-narrowing'
 #%% ポアソン回帰モデルからのデータ生成
 n = 500
 np.random.seed(99)
@@ -47,7 +44,7 @@ n_tune = 1000
 with poisson_regression_model:
     trace = pm.sample(draws=n_draws, chains=n_chains, tune=n_tune,
                       random_seed=123)
-print(pm.summary(trace))
+    print(pm.summary(trace))
 #%% 事後分布のグラフの作成
 fig, ax = plt.subplots(k, 2, num=1, figsize=(8, 1.5*k), facecolor='w')
 for index in range(k):

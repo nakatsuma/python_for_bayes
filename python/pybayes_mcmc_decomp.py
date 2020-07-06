@@ -21,9 +21,6 @@ elif sys.platform.startswith('linux'):
 else:
     sys.exit('このPythonコードが対応していないOSを使用しています．')
 jpfont = FontProperties(fname=FontPath)
-#   コンパイルエラーの回避策
-import theano
-theano.config.gcc.cxxflags = '-Wno-c++11-narrowing'
 #   PandasからMatplotlibへのコンバーター
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
@@ -55,9 +52,9 @@ n_chains = 4
 n_tune = 2000
 with timeseries_decomp:
     trace = pm.sample(draws=n_draws, chains=n_chains, tune=n_tune,
-                      target_accept=0.9, random_seed=123)
-param_names = ['sigma', 'tau', 'omega']
-print(pm.summary(trace, var_names=param_names))
+                      target_accept=0.95, random_seed=123)
+    param_names = ['sigma', 'tau', 'omega']
+    print(pm.summary(trace, var_names=param_names))
 #%% 事後分布のグラフの作成
 series_name = ['原系列', '平滑値', 'トレンド', '季節変動', 'ノイズ']
 labels = ['$\\sigma$', '$\\tau$', '$\\omega$']

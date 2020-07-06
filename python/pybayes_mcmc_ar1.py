@@ -19,9 +19,6 @@ elif sys.platform.startswith('linux'):
 else:
     sys.exit('このPythonコードが対応していないOSを使用しています．')
 jpfont = FontProperties(fname=FontPath)
-#   コンパイルエラーの回避策
-import theano
-theano.config.gcc.cxxflags = '-Wno-c++11-narrowing'
 #%% ノイズを含むAR(1)過程からデータを生成
 n = 500
 np.random.seed(99)
@@ -46,8 +43,8 @@ n_tune = 1000
 with ar1_model:
     trace = pm.sample(draws=n_draws, chains=n_chains, tune=n_tune,
                       random_seed=123)
-param_names = ['sigma', 'rho', 'omega']
-print(pm.summary(trace, var_names=param_names))
+    param_names = ['sigma', 'rho', 'omega']
+    print(pm.summary(trace, var_names=param_names))
 #%% 事後分布のグラフの作成
 labels = ['$\\sigma$', '$\\rho$', '$\\omega$']
 k = len(labels)

@@ -20,9 +20,6 @@ else:
     print('このPythonコードが対応していないOSを使用しています．')
     sys.exit()
 jpfont = FontProperties(fname=FontPath)
-#   コンパイルエラーの回避策
-import theano
-theano.config.gcc.cxxflags = '-Wno-c++11-narrowing'
 #%% 回帰モデルからのデータ生成
 n = 50
 np.random.seed(99)
@@ -47,7 +44,7 @@ n_tune = 1000
 with regression_laplace_halfcauchy:
     trace = pm.sample(draws=n_draws, chains=n_chains, tune=n_tune,
                       random_seed=123)
-print(pm.summary(trace))
+    print(pm.summary(trace))
 #%% 事後分布のグラフの作成
 k = b0.size
 param_names = ['a', 'b', 'sigma']
