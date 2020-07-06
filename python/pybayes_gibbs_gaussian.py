@@ -75,11 +75,13 @@ def mcmc_stats(runs, burnin, prob, batch):
     post_mean = np.mean(traces, axis=0)
     post_median = np.median(traces, axis=0)
     post_sd = np.std(traces, axis=0)
-    mc_err = [pm.mcse(traces[:, i].reshape((batch, n))) for i in range(k)]
+    mc_err = [pm.mcse(traces[:, i].reshape((n, batch), order='F')).item(0) \
+              for i in range(k)]
     ci_lower = np.percentile(traces, 0.5 * alpha, axis=0)
     ci_upper = np.percentile(traces, 100 - 0.5 * alpha, axis=0)
     hpdi = pm.hpd(traces, 1.0 - prob)
-    rhat = [pm.rhat(traces[:, i].reshape((batch, n))) for i in range(k)]
+    rhat = [pm.rhat(traces[:, i].reshape((n, batch), order='F')).item(0) \
+            for i in range(k)]
     stats = np.vstack((post_mean, post_median, post_sd, mc_err,
                        ci_lower, ci_upper, hpdi.T, rhat)).T
     stats_string = ['平均', '中央値', '標準偏差', '近似誤差',
