@@ -60,6 +60,14 @@
 (bayes) PS C:\Users\Thomas> pip install pymc3
 ```
 
+もしpipでのインストールがうまくいかないときは
+
+```IPython
+(bayes) PS C:\Users\Thomas> conda install -c conda-forge pymc3
+```
+
+とする。
+
 最後に
 
 ```IPython
