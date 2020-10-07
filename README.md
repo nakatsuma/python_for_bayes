@@ -39,7 +39,7 @@
 `Anaconda Powershell Prompt` (Windows) あるいは`Terminal` (macos, Linux) を立ち上げて、
 
 ```IPython
-(base) PS C:\Users\Thomas> conda create -n bayes jupyterlab seaborn spyder
+(base) PS C:\Users\Thomas> conda create -n bayes jupyterlab seaborn spyder tqdm
 ```
 
 とする。続けて
