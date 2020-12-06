@@ -4,6 +4,7 @@
 
 ---
 
++ [PyMC4について](#pymc4について)
 + [正誤表](ERRATA.md)
 + [PythonとPyMCのインストール手順](#pythonとpymcのインストール手順)
   + [ステップ1: Anacondaのインストール](#ステップ1-anacondaのインストール)
@@ -20,7 +21,14 @@
 
 ---
 
-## 正誤表（2020年6月20日改定）
+## PyMC4について
+
++ [公式発表（英語）](https://pymc-devs.medium.com/the-future-of-pymc3-or-theano-is-dead-long-live-theano-d8005f8a0e9b)
++ 本書5ページの脚注で言及しているTensorFlowを利用することを目指したPyMCの次期バージョン (PyMC4) の開発は中止された。
++ 今後は現行バージョンPyMC3の基盤であるTheanoをPyMCの開発チームが引き継ぎ、Theanoから分岐したTheano-PyMCとして開発を継続することが決まっている。
++ PyMC4への移行が停止されたことで、本書で使用しているPyMC3用のPythonコードは、細かい仕様の変更を除き、今後も継続して使用できる見通しである。
+
+## 正誤表（2020年7月7日改定）
 
 + [ERRATA.md](ERRATA.md)
 
