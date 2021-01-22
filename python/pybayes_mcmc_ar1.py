@@ -5,6 +5,8 @@ import numpy as np
 import scipy.stats as st
 #   PyMCの読み込み
 import pymc3 as pm
+#   ArviZの読み込み
+import arviz as az
 #   MatplotlibのPyplotモジュールの読み込み
 import matplotlib.pyplot as plt
 #   日本語フォントの設定
@@ -44,7 +46,7 @@ with ar1_model:
     trace = pm.sample(draws=n_draws, chains=n_chains, tune=n_tune,
                       random_seed=123)
     param_names = ['sigma', 'rho', 'omega']
-    print(pm.summary(trace, var_names=param_names))
+    print(az.summary(trace, var_names=param_names))
 #%% 事後分布のグラフの作成
 labels = ['$\\sigma$', '$\\rho$', '$\\omega$']
 k = len(labels)

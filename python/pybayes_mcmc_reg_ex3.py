@@ -7,6 +7,8 @@ import scipy.stats as st
 import scipy.linalg as la
 #   PyMCの読み込み
 import pymc3 as pm
+#   ArviZの読み込み
+import arviz as az
 #   MatplotlibのPyplotモジュールの読み込み
 import matplotlib.pyplot as plt
 #   日本語フォントの設定
@@ -51,7 +53,7 @@ n_tune = 1000
 with multiple_regression:
     trace = pm.sample(draws=n_draws, chains=n_chains, tune=n_tune,
                       random_seed=123)
-    print(pm.summary(trace))
+    print(az.summary(trace))
 #%% 事後分布のグラフの作成
 fig, ax = plt.subplots(k+1, 2, num=1, figsize=(8, 1.5*(k+1)), facecolor='w')
 for index in range(k+1):

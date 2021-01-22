@@ -7,6 +7,8 @@ import scipy.stats as st
 import pandas as pd
 #   PyMCの読み込み
 import pymc3 as pm
+#   ArviZの読み込み
+import arviz as az
 #   MatplotlibのPyplotモジュールの読み込み
 import matplotlib.pyplot as plt
 #   tqdmからプログレスバーの関数を読み込む
@@ -75,12 +77,12 @@ def mcmc_stats(runs, burnin, prob, batch):
     post_mean = np.mean(traces, axis=0)
     post_median = np.median(traces, axis=0)
     post_sd = np.std(traces, axis=0)
-    mc_err = [pm.mcse(traces[:, i].reshape((n, batch), order='F')).item(0) \
+    mc_err = [az.mcse(traces[:, i].reshape((n, batch), order='F')).item(0) \
               for i in range(k)]
     ci_lower = np.percentile(traces, 0.5 * alpha, axis=0)
     ci_upper = np.percentile(traces, 100 - 0.5 * alpha, axis=0)
-    hpdi = pm.hpd(traces, 1.0 - prob)
-    rhat = [pm.rhat(traces[:, i].reshape((n, batch), order='F')).item(0) \
+    hpdi = az.hdi(traces, prob)
+    rhat = [az.rhat(traces[:, i].reshape((n, batch), order='F')).item(0) \
             for i in range(k)]
     stats = np.vstack((post_mean, post_median, post_sd, mc_err,
                        ci_lower, ci_upper, hpdi.T, rhat)).T

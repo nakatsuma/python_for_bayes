@@ -7,6 +7,8 @@ import scipy.stats as st
 import pandas as pd
 #   PyMCの読み込み
 import pymc3 as pm
+#   ArviZの読み込み
+import arviz as az
 #   MatplotlibのPyplotモジュールの読み込み
 import matplotlib.pyplot as plt
 #   日本語フォントの設定
@@ -54,7 +56,7 @@ with timeseries_decomp:
     trace = pm.sample(draws=n_draws, chains=n_chains, tune=n_tune,
                       target_accept=0.95, random_seed=123)
     param_names = ['sigma', 'tau', 'omega']
-    print(pm.summary(trace, var_names=param_names))
+    print(az.summary(trace, var_names=param_names))
 #%% 事後分布のグラフの作成
 series_name = ['原系列', '平滑値', 'トレンド', '季節変動', 'ノイズ']
 labels = ['$\\sigma$', '$\\tau$', '$\\omega$']
