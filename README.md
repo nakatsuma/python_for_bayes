@@ -4,20 +4,21 @@
 
 ---
 
-+ [PyMC4について](#pymc4について)
-+ [正誤表](ERRATA.md)
-+ [PythonとPyMCのインストール手順](#pythonとpymcのインストール手順)
-  + [ステップ1: Anacondaのインストール](#ステップ1-anacondaのインストール)
-  + [ステップ2: PyMCを実行する環境の設定](#ステップ2-pymcを実行する環境の設定)
-+ [Jupyter Notebookを始める方法](#jupyter-notebookを始める方法)
-  + [方法1: Anaconda NavigatorからJupyter Notebookを起動する方法](#方法1-anaconda-navigatorからjupyter-notebookを起動する方法)
-  + [方法2: CLIから起動する方法](#方法2-cliから起動する方法)
-+ [Pythonコード](#pythonコード)
-  + [第2章](#第2章)
-  + [第3章](#第3章)
-  + [第4章](#第4章)
-  + [第5章](#第5章)
-  + [第6章](#第6章)
+- [中妻照雄「Pythonによるベイズ統計学入門」](#中妻照雄pythonによるベイズ統計学入門)
+  - [PyMC4について](#pymc4について)
+  - [正誤表（2021年1月22日改定）](#正誤表2021年1月22日改定)
+  - [PythonとPyMCのインストール手順](#pythonとpymcのインストール手順)
+    - [ステップ1: Anacondaのインストール](#ステップ1-anacondaのインストール)
+    - [ステップ2: PyMCを実行する環境の設定](#ステップ2-pymcを実行する環境の設定)
+  - [Jupyter Notebookを始める方法](#jupyter-notebookを始める方法)
+    - [方法1: Anaconda NavigatorからJupyter Notebookを起動する方法](#方法1-anaconda-navigatorからjupyter-notebookを起動する方法)
+    - [方法2: CLIから起動する方法](#方法2-cliから起動する方法)
+  - [Pythonコード](#pythonコード)
+    - [第2章](#第2章)
+    - [第3章](#第3章)
+    - [第4章](#第4章)
+    - [第5章](#第5章)
+    - [第6章](#第6章)
 
 ---
 
@@ -28,7 +29,7 @@
 + 今後は現行バージョンPyMC3の基盤であるTheanoをPyMCの開発チームが引き継ぎ、Theanoから分岐したTheano-PyMCとして開発を継続することが決まっている。
 + PyMC4への移行が停止されたことで、本書で使用しているPyMC3用のPythonコードは、細かい仕様の変更を除き、今後も継続して使用できる見通しである。
 
-## 正誤表（2020年7月7日改定）
+## 正誤表（2021年1月22日改定）
 
 + [ERRATA.md](ERRATA.md)
 
