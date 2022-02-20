@@ -5,7 +5,7 @@
 ---
 
 - [中妻照雄「Pythonによるベイズ統計学入門」](#中妻照雄pythonによるベイズ統計学入門)
-  - [PyMC4について](#pymc4について)
+  - [PyMCの開発動向について](#pymcの開発動向について)
   - [正誤表（2021年5月25日改定）](#正誤表2021年5月25日改定)
   - [PythonとPyMCのインストール手順](#pythonとpymcのインストール手順)
     - [ステップ1: Anacondaのインストール](#ステップ1-anacondaのインストール)
@@ -22,12 +22,13 @@
 
 ---
 
-## PyMC4について
+## PyMCの開発動向について
 
 + [公式発表（英語）](https://pymc-devs.medium.com/the-future-of-pymc3-or-theano-is-dead-long-live-theano-d8005f8a0e9b)
 + 本書5ページの脚注で言及しているTensorFlowを利用することを目指したPyMCの次期バージョン (PyMC4) の開発は中止された。
-+ 今後は現行バージョンPyMC3の基盤であるTheanoをPyMCの開発チームが引き継ぎ、Theanoから分岐したTheano-PyMCとして開発を継続することが決まっている。
 + PyMC4への移行が停止されたことで、本書で使用しているPyMC3用のPythonコードは、細かい仕様の変更を除き、今後も継続して使用できる見通しである。
++ 今後は現行バージョンPyMC3の基盤であるTheanoをPyMCの開発チームが引き継ぎ、Theanoから分岐した[aesara](https://github.com/aesara-devs/aesara)として開発が継続される。
++ PyMC3は次期バージョンから名称がPyMCに戻る。そのため、最新版のPyMCをインストールするためには、下記のインストール手順で`pymc3`ではなく`pymc`としなければならない。
 
 ## 正誤表（2021年5月25日改定）
 
