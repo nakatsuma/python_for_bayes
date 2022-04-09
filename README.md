@@ -9,7 +9,8 @@
   - [正誤表（2022年2月21日改定）](#正誤表2022年2月21日改定)
   - [PythonとPyMCのインストール手順](#pythonとpymcのインストール手順)
     - [ステップ1: Anacondaのインストール](#ステップ1-anacondaのインストール)
-    - [ステップ2: PyMCを実行する環境の設定](#ステップ2-pymcを実行する環境の設定)
+    - [ステップ2: MinGWのインストール（Windowsのみ）](#ステップ2-mingwのインストールwindowsのみ)
+    - [ステップ3: PyMCを実行する環境の設定](#ステップ3-pymcを実行する環境の設定)
   - [Jupyter Notebookを始める方法](#jupyter-notebookを始める方法)
     - [方法1: Anaconda NavigatorからJupyter Notebookを起動する方法](#方法1-anaconda-navigatorからjupyter-notebookを起動する方法)
     - [方法2: CLIから起動する方法](#方法2-cliから起動する方法)
@@ -28,7 +29,7 @@
 + 本書5ページの脚注で言及しているTensorFlowを利用することを目指したPyMCの次期バージョン (PyMC4) の開発は中止された。
 + PyMC4への移行が停止されたことで、本書で使用しているPyMC3用のPythonコードは、細かい仕様の変更を除き、今後も継続して使用できる見通しである。
 + 今後は現行バージョンPyMC3の基盤であるTheanoをPyMCの開発チームが引き継ぎ、Theanoから分岐した[aesara](https://github.com/aesara-devs/aesara)として開発が継続される。
-+ PyMC3は次期バージョンから名称がPyMCに戻る。そのため、最新版のPyMCをインストールするためには、下記のインストール手順で`pymc3`ではなく`pymc`としなければならない。
++ PyMC3はバージョン4から名称がPyMCに戻る。そのため、バージョン4のPyMCをインストールするためには、`pymc3`ではなく`pymc`としなければならない。バージョン4のインストール手順についてはPyMCの[公式サイト](https://docs.pymc.io/en/v3/index.html)を参照のこと。
 
 ## 正誤表（2022年2月21日改定）
 
@@ -40,48 +41,41 @@
 
 1. 古いAnacondaがインストールされているときは、この[手順](https://docs.anaconda.com/anaconda/install/uninstall/)でアンインストールしておく。
 
-2. Anacondaのインストーラー (Windows, macOS or Linux) を[ここ](https://www.anaconda.com/distribution/)から入手する.
+2. Anacondaのインストーラー (Windows, macOS or Linux) を[ここ](https://www.anaconda.com/products/distribution)から入手する.
 
 3. ダウンロードしたインストーラーをダブルクリックして Anacondaのインストールを行う。
 
-### ステップ2: PyMCを実行する環境の設定
+### ステップ2: MinGWのインストール（Windowsのみ）
+
+[PyMC v3のインストール手順](https://github.com/pymc-devs/pymc/wiki/Installation-Guide-(Windows))に従い、MinGWをインストールする。
+
+### ステップ3: PyMCを実行する環境の設定
 
 `Anaconda Powershell Prompt` (Windows) あるいは`Terminal` (macos, Linux) を立ち上げて、
 
 ```IPython
-(base) PS C:\Users\Thomas> conda create -n bayes jupyterlab seaborn spyder tqdm
+conda create -n bayes jupyterlab seaborn tqdm
 ```
 
 とする。続けて
 
 ```IPython
-(base) PS C:\Users\Thomas> conda activate bayes
+conda activate bayes
 ```
 
-とすると、以下のようにプロンプトが変わる。
+として
 
 ```IPython
-(bayes) PS C:\Users\Thomas>
+conda install -c conda-forge pymc3 theano-pymc mkl mkl-service
 ```
+を実行してPyMCをインストールする。
 
-続いてpipでPyMCをインストールする。
-
-```IPython
-(bayes) PS C:\Users\Thomas> pip install pymc3
-```
-
-もしpipでのインストールがうまくいかないときは
-
-```IPython
-(bayes) PS C:\Users\Thomas> conda install -c conda-forge pymc3
-```
-
-とする。
+なおAppleシリコン搭載のMacではIntel Math Kernel Libraryが使用できないため、`mkl`と`mkl-service`は不要である。
 
 最後に
 
 ```IPython
-(bayes) PS C:\Users\Thomas> python -m ipykernel install --user --name bayes --display-name "Python (Bayes)"
+python -m ipykernel install --user --name bayes --display-name "Python (Bayes)"
 ```
 
 とすれば、環境の設定が完了する。
@@ -95,7 +89,7 @@
 `Anaconda Navigator`を`Start Menu` (Windows) か `Launchpad` (macOS) から起動する。 あるいは、`Anaconda Powershell Prompt` (Windows) か `Terminal` (macOS, Linux) を立ち上げて、
 
 ```IPython
-(base) PS C:\Users\Thomas> anaconda-navigator
+anaconda-navigator
 ```
 
 としてもよい。そして、`Anaconda Navigator`で`Jupyter Notebook`の`Launch`ボタンをクリックする。
@@ -105,8 +99,8 @@
 `Anaconda Powershell Prompt` (Windows) か `Terminal` (macOS, Linux) を立ち上げて、
 
 ```IPython
-(base) PS C:\Users\Thomas> conda activate bayes
-(bayes) PS C:\Users\Thomas> jupyter notebook
+conda activate bayes
+jupyter notebook
 ```
 
 とする。
