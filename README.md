@@ -25,7 +25,7 @@
 ## PyMC 4.0のリリースについて
 
 + [公式発表（英語）](https://www.pymc.io/blog/v4_announcement.html)
-+ PyMCは、バージョン4.0より名称が**PyMC3**から**PyMC**に戻る。そのためPyMC 4.0を`conda`でインストールするためには、`pymc3`ではなく`pymc`としなければならない。PyMCのインストール手順については、 [PythonとPyMCのインストール手順](#pythonとpymcのインストール手順)　およびPyMCの[公式サイト](https://www.pymc.io/projects/docs/en/stable/installation.html)を参照のこと。
++ PyMCは、バージョン4.0より名称が**PyMC3**から**PyMC**に戻る。そのためPyMC 4.0を`conda`でインストールするためには、`pymc3`ではなく`pymc`としなければならない。PyMCのインストール手順については、 [PythonとPyMCのインストール手順](#pythonとpymcのインストール手順)およびPyMCの[公式サイト](https://www.pymc.io/projects/docs/en/stable/installation.html)を参照のこと。
 + PyMC 4.0へのアップグレードにより、パッケージの仕様の一部が変更となった。それを反映させたPythonコードをレポジトリの`python`というフォルダに置いてある。
 + 同じ`python`の中の`pymc3`というフォルダ内にPyMC 3.11.5で動作するPythonコードがあるので、古いPyMC3を引き続き使用する人はこちらのコードを使って欲しい。なお`pymc3`に置かれているのは仕様変更の影響を受けるコードのみである。そうでない場合は親フォルダである`python`のコードがそのまま動く。
 
