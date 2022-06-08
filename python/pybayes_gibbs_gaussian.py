@@ -5,8 +5,6 @@ import numpy as np
 import scipy.stats as st
 #   Pandasの読み込み
 import pandas as pd
-#   PyMCの読み込み
-import pymc3 as pm
 #   ArviZの読み込み
 import arviz as az
 #   MatplotlibのPyplotモジュールの読み込み

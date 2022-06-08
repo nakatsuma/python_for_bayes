@@ -7,8 +7,6 @@ import scipy.linalg as la
 import scipy.stats as st
 #   Pandasの読み込み
 import pandas as pd
-#   PyMCの読み込み
-import pymc3 as pm
 #   ArviZの読み込み
 import arviz as az
 #   tqdmからプログレスバーの関数を読み込む
