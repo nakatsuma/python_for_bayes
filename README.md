@@ -5,12 +5,11 @@
 ---
 
 - [中妻照雄「Pythonによるベイズ統計学入門」](#中妻照雄pythonによるベイズ統計学入門)
-  - [PyMCの開発動向について](#pymcの開発動向について)
+  - [PyMC 4.0のリリースについて](#pymc-40のリリースについて)
   - [正誤表（2022年2月21日改定）](#正誤表2022年2月21日改定)
   - [PythonとPyMCのインストール手順](#pythonとpymcのインストール手順)
     - [ステップ1: Anacondaのインストール](#ステップ1-anacondaのインストール)
-    - [ステップ2: MinGWのインストール（Windowsのみ）](#ステップ2-mingwのインストールwindowsのみ)
-    - [ステップ3: PyMCを実行する環境の設定](#ステップ3-pymcを実行する環境の設定)
+    - [ステップ2: PyMCを実行する環境の設定](#ステップ2-pymcを実行する環境の設定)
   - [Jupyter Notebookを始める方法](#jupyter-notebookを始める方法)
     - [方法1: Anaconda NavigatorからJupyter Notebookを起動する方法](#方法1-anaconda-navigatorからjupyter-notebookを起動する方法)
     - [方法2: CLIから起動する方法](#方法2-cliから起動する方法)
@@ -23,13 +22,12 @@
 
 ---
 
-## PyMCの開発動向について
+## PyMC 4.0のリリースについて
 
-+ [公式発表（英語）](https://pymc-devs.medium.com/the-future-of-pymc3-or-theano-is-dead-long-live-theano-d8005f8a0e9b)
-+ 本書5ページの脚注で言及しているTensorFlowを利用することを目指したPyMCの次期バージョン (PyMC4) の開発は中止された。
-+ PyMC4への移行が停止されたことで、本書で使用しているPyMC3用のPythonコードは、細かい仕様の変更を除き、今後も継続して使用できる見通しである。
-+ 今後は現行バージョンPyMC3の基盤であるTheanoをPyMCの開発チームが引き継ぎ、Theanoから分岐した[aesara](https://github.com/aesara-devs/aesara)として開発が継続される。
-+ PyMC3はバージョン4から名称がPyMCに戻る。そのため、バージョン4のPyMCをインストールするためには、`pymc3`ではなく`pymc`としなければならない。バージョン4のインストール手順についてはPyMCの[公式サイト](https://docs.pymc.io/en/v3/index.html)を参照のこと。
++ [公式発表（英語）](https://www.pymc.io/blog/v4_announcement.html)
++ PyMCは、バージョン4.0より名称が**PyMC3**から**PyMC**に戻る。そのためPyMC 4.0を`conda`でインストールするためには、`pymc3`ではなく`pymc`としなければならない。PyMCのインストール手順については、 [PythonとPyMCのインストール手順](#pythonとpymcのインストール手順)　およびPyMCの[公式サイト](https://www.pymc.io/projects/docs/en/stable/installation.html)を参照のこと。
++ PyMC 4.0へのアップグレードにより、パッケージの仕様の一部が変更となった。それを反映させたPythonコードをレポジトリの`python`というフォルダに置いてある。
++ 同じ`python`の中の`pymc3`というフォルダ内にPyMC 3.11.5で動作するPythonコードがあるので、古いPyMC3を引き続き使用する人はこちらのコードを使って欲しい。なお`pymc3`に置かれているのは仕様変更の影響を受けるコードのみである。そうでない場合は親フォルダである`python`のコードがそのまま動く。
 
 ## 正誤表（2022年2月21日改定）
 
@@ -45,16 +43,12 @@
 
 3. ダウンロードしたインストーラーをダブルクリックして Anacondaのインストールを行う。
 
-### ステップ2: MinGWのインストール（Windowsのみ）
-
-[PyMC v3のインストール手順](https://github.com/pymc-devs/pymc/wiki/Installation-Guide-(Windows))に従い、MinGWをインストールする。
-
-### ステップ3: PyMCを実行する環境の設定
+### ステップ2: PyMCを実行する環境の設定
 
 `Anaconda Powershell Prompt` (Windows) あるいは`Terminal` (macos, Linux) を立ち上げて、
 
 ```IPython
-conda create -n bayes jupyterlab seaborn tqdm
+conda create -c conda-forge -n bayes jupyterlab seaborn tqdm pymc
 ```
 
 とする。続けて
@@ -63,16 +57,7 @@ conda create -n bayes jupyterlab seaborn tqdm
 conda activate bayes
 ```
 
-として
-
-```IPython
-conda install -c conda-forge pymc3 theano-pymc mkl mkl-service
-```
-を実行してPyMCをインストールする。
-
-なおAppleシリコン搭載のMacではIntel Math Kernel Libraryが使用できないため、`mkl`と`mkl-service`は不要である。
-
-最後に
+として、最後に
 
 ```IPython
 python -m ipykernel install --user --name bayes --display-name "Python (Bayes)"
@@ -141,7 +126,7 @@ jupyter notebook
 
 ### 第5章
 
-**注意** バージョン3.9以降のPyMCでは、以下のコードはJupyter Notebook上でのみ実行可能となっている。そのためコード全体をJupyter Notebook内のセルにコピーして実行しなければならない。
+**注意** バージョン3.9以降のPyMCでは、コード5.1-5.3はJupyter Notebook上でのみ実行可能となっている。そのためコード全体をJupyter Notebook内のセルにコピーして実行しなければならない。
 
 + コード5.1 ノイズを含むAR(1)過程: [pybayes\_mcmc\_ar1.py](python/pybayes_mcmc_ar1.py)
 + コード5.2 使用電力量のトレンドと季節変動: [pybayes\_mcmc\_decomp.py](python/pybayes_mcmc_decomp.py)
