@@ -25,7 +25,7 @@ plt.plot(q, st.uniform.pdf(q), 'k-')
 plt.plot(q, st.beta.pdf(q, 4, 6), 'k--')
 plt.xlim(0, 1)
 plt.ylim(0, 2.8)
-plt.legend(['(A) 一様分布 ($\\alpha$ = 1, $\\beta$ = 1)',
+plt.legend(['(A) 一様分布 (a = 1, b = 1)',
             '(B) ベータ分布 ($\\alpha$ = 4, $\\beta$ = 6)'],
             loc='best', frameon=False, prop=jpfont)
 plt.xlabel('成功確率 q', fontproperties=jpfont)
