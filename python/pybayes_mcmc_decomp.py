@@ -34,7 +34,7 @@ data = pd.read_csv('electricity.csv', index_col=0)
 y0 = np.log(data.values.reshape((data.shape[0]//3, 3)).sum(axis=1))
 y = 100 * (y0 - y0[0])
 n = y.size
-series_date = pd.date_range(start='1/1/1989', periods=n, freq='Q')
+series_date = pd.date_range(start='1/1/1989', periods=n, freq='QE')
 #%% 確率的トレンド+季節変動
 trend_coef = np.array([2.0, -1.0])
 seasonal_coef = np.array([-1.0, -1.0, -1.0])
